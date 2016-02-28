@@ -1,0 +1,19 @@
+html
+    head
+        title= pageTitle
+        script(type='text/javascript', src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+        script(type='text/javascript', src="/js/index.js")
+
+
+    body
+        h1= 'Zero project'
+        h2= 'List of Users'
+        ul
+            each user in users
+                li
+                    h3= user.name
+                    p= "He says: " + user.firstWord
+
+
+
+        div#more-users= "load more users"
