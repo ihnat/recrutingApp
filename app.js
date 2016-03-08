@@ -1,29 +1,26 @@
 var express = require('express');
-//var jade = require('jade');
-var user = require('./user/index');
+var jade = require('jade');
+var bodyParser = require('body-parser');
+
+var users = require('./user/index');
+
 
 
 var app = express();
+
+app.use(bodyParser.json());
+
+app.use('/user', users);
+
 
 
 app.set('view engine', 'jade');
 
 app.use(express.static('public'));
 
-function generateUsers(nameList) {
-    var userList = [];
-    nameList.forEach(function(name, i) {
-        var hero = new user.User(name);
-        hero.firstWord = hero.say();
-        userList.push(hero);
-    });
-    return userList;
-};
-var list = ["ihnat","piatro","vasia","gena"]
-var userList = generateUsers(list)
 
 app.get('/', function(req, res) {
-    res.render('index', {users: userList});
+    res.render('index');
 });
 
 app.get('/users', function (req, res) {

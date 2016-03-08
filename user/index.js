@@ -1,13 +1,13 @@
-console.log('user index.js');
 
-function User(name) {
-    this.name = name;
-};
-
-User.prototype.say = function() {
-    var text = 'Hello, my name is ' + this.name
-    return text;
-}
+var router = require('express').Router(),
+    controller = require('./userController');
 
 
-exports.User = User;
+router.post('/add', controller.addUser);
+
+router.post('/change', controller.changeUser);
+
+router.post('/delite', controller.deliteUser);
+
+
+module.exports = router;
