@@ -17,13 +17,15 @@ $(function() {
         });
     });
 
-    $('#add-user').on('click', function() {
+    $('#add-user').on('click', function(event) {
+
+        event.preventDefault();
 
         $.ajax({
             type: 'POST',
             url: '/user/add',
-            data: JSON.stringify(object),
-            contentType: 'application/json',
+            data: $('#create').serialize(),
+            //contentType: 'test',
             success: function (users) {
                 console.log(users);
             },
@@ -32,6 +34,26 @@ $(function() {
             }
         });
     });
+
+    $('#get-users').on('click', function(event) {
+
+        event.preventDefault();
+
+        $.ajax({
+            type: 'GET',
+            url: '/user/get',
+            //data: $('#create').serialize(),
+            //contentType: 'test',
+            success: function (users) {
+                console.log(users);
+                renderUsers(users);
+            },
+            error: function () {
+                alert("don't work");
+            }
+        });
+    });
+
     $('#change-user').on('click', function() {
 
         $.ajax({
@@ -64,9 +86,10 @@ $(function() {
         });
     });
 
-    function addUsers(userList) {
+    function renderUsers(userList) {
+        $('.user-list').html('');
         userList.forEach(function(user, i) {
-            $('ul').append('<li><h3>'+ user.name + '</h3><p>' + user.firstWord + '</p></li>');
+            $('ul').append('<li><h3>'+ user.email + '</h3><p>' + user.password + '</p></li>');
         });
     }
 

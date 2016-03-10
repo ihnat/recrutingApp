@@ -5,6 +5,8 @@ var router = require('express').Router(),
 
 router.post('/add', controller.addUser);
 
+router.get('/get', controller.getUsers);
+
 router.post('/change', controller.changeUser);
 
 router.post('/delite', controller.deliteUser);

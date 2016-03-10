@@ -9,6 +9,9 @@ var users = require('./user/index');
 var app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 
 app.use('/user', users);
 
@@ -20,6 +23,10 @@ app.use(express.static('public'));
 
 
 app.get('/', function(req, res) {
+    res.render('login');
+});
+
+app.get('/index', function(req, res) {
     res.render('index');
 });
 
