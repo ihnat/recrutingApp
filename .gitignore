@@ -1,1 +1,13 @@
+<<<<<<< HEAD
 node_modules
+=======
+node_modules
+public
+.tmp
+.sass-cache
+.idea
+client/bower_components
+dist
+/server/config/local.env.js
+npm-debug.log
+>>>>>>> 6e0f001c37afc5a38c404540c02c467345792c24

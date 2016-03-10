@@ -1,0 +1,11 @@
+<div class="container" ng-controller="InterviewPathCtrl">
+    <div class="row">
+      <ul class="col-md-12 nav navbar-nav">
+        <li ng-repeat="step in menu" ui-sref-active="active">
+            <a ui-sref="{{step.state}}">{{step.title}} ></a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
